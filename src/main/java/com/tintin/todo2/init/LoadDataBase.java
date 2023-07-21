@@ -1,6 +1,8 @@
 package com.tintin.todo2.init;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +21,11 @@ public class LoadDataBase {
 
     @Bean
     CommandLineRunner initDatabase(TaskRepository taskRepository){
+        List<Task> demoTasks = new ArrayList<>();
+        demoTasks.add(new Task(0L,"test task","task to test",new Date(),new Date(),true));
+        demoTasks.add(new Task(0L,"test task","task to test",new Date(),new Date(),true));
         return args -> {
-            logger.info("Preloading" + taskRepository.save(new Task(0L,"test task","task to test",new Date(),new Date(),true)));
-            logger.info("Preloading" + taskRepository.save(new Task(0L,"test task","task to test",new Date(),new Date(),true)));
+            logger.info("Preloading " + taskRepository.saveAll(demoTasks));
         };
     }
 }

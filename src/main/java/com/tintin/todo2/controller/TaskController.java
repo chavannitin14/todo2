@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tintin.todo2.dao.TaskRepository;
 import com.tintin.todo2.pojo.Task;
 
 @RestController
+@RequestMapping("/task")
 public class TaskController {
 
     private final TaskRepository taskRepository;
@@ -18,22 +21,17 @@ public class TaskController {
         this.taskRepository = taskRepository;
     }
 
-    @GetMapping("/Hi")
+    @GetMapping("")
     String sayHi() {
-        return "Hi";
+        return "Hi, this is tasks api ";
     }
 
-    @GetMapping("/tasks")
-    List<Task> allTask() {
-        return taskRepository.findAll();
-    }
-
-    @GetMapping("/tasks/{userId}")
-    List<Task> allUserTask(@PathVariable Long userId) {
+    @GetMapping("/{userId}")
+    List<Task> allTasks(@PathVariable Long userId) {
         return taskRepository.findByUserId(userId);
     }
 
-    @GetMapping("/task/{userId}/{taskId}")
+    @GetMapping("/{userId}/{taskId}")
     Task getTaskById(@PathVariable Long userId, @PathVariable Long taskId) {
         return taskRepository.findByUserIdAndTaskId(userId, taskId);
     }
