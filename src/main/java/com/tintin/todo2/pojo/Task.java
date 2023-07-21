@@ -19,8 +19,8 @@ public class Task {
     public Task() {
     }
 
-    public Task(Long userId, String title, String description, Date dueDate, Date reminderDate, boolean reminder) {
-        this.userId = userId;
+    public Task( String title, String description, Date dueDate, Date reminderDate, boolean reminder) {
+        
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
