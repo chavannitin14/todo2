@@ -11,7 +11,7 @@ import com.tintin.todo2.dao.TaskRepository;
 import com.tintin.todo2.pojo.Task;
 
 @RestController
-@RequestMapping("/task")
+@RequestMapping("/taskAPI")
 public class TaskController {
 
     private final TaskRepository taskRepository;

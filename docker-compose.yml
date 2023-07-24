@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  todo2:
+    image: todo2
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+  todo2react:
+    image: todo2react
+    build:
+      context: ./todo_2_react
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+    links:
+      - todo2
