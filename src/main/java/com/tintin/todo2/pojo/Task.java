@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Task {
@@ -16,6 +18,9 @@ public class Task {
     private Date reminderDate;
     private boolean reminder;
     
+    @ManyToOne()
+    @JoinColumn(name = "userId", insertable = false, updatable = false)
+    private User user;
     public Task() {
     }
 

@@ -14,7 +14,7 @@ public class User {
     @GeneratedValue
     private Long userId;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(targetEntity = Task.class, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userId")
     private List<Task> tasks;
 
     public User() {
